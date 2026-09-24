@@ -6,22 +6,24 @@ public class Item {
     public Item(Produto produto, int quantidade) {
         this.produto = produto;
         this.quantidade = quantidade;
-        this.valor_total = produto.getPreco() * quantidade;     
+        atualizarValor();
     }
 
     public Produto getProduto() { return produto; }
-
     public void setProduto(Produto produto) {
         this.produto = produto;
-        this.valor_total = this.produto.getPreco() * this.quantidade;
+        atualizarValor();
     }
 
     public int getQuantidade() { return quantidade; }
-
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
-        this.valor_total = this.produto.getPreco() * this.quantidade;
+        atualizarValor();
     }
 
     public double getValor_Total() { return valor_total; }
+
+    private void atualizarValor() {
+        this.valor_total = this.produto.getPreco() * this.quantidade;
+    }
 }

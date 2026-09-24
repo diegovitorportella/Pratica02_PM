@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.list;
+import java.util.List;
 
 public class Fatura {
     private ArrayList<Item> itens;
@@ -7,7 +7,7 @@ public class Fatura {
 
     public Fatura() {
         this.itens = new ArrayList<>();
-        this.total_fatura = 0.0;        
+        this.total_fatura = 0.0;
     }
 
     public void adicionarItem(Item item){
@@ -20,11 +20,24 @@ public class Fatura {
             this.itens.remove(indice);
             atualizarValorTotalFatura();
             System.out.println("Item removido com sucesso!");
-        }else{
+        } else {
             System.out.println("Índice de item inválido.");
-        }    
+        }
     }
 
+    public void atualizarValorTotalFatura() {
+        this.total_fatura = 0.0;
+        for (Item item : this.itens) {
+            this.total_fatura += item.getValor_Total();
+        }
+    }
+
+    public Item getItem(int indice) {
+        if(indice >= 0 && indice < this.itens.size()){
+            return this.itens.get(indice);
+        }
+        return null;
+    }
 
     public List<Item> getItens() { return itens; }
     public double getTotal_Fatura() { return total_fatura; }
